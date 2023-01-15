@@ -15,12 +15,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-	res.status(200).send({
-		message: 'Hello from CodeX!',
-	});
-});
-
 app.post('/', async (req, res) => {
 	try {
 		const prompt = req.body.prompt;
@@ -29,10 +23,10 @@ app.post('/', async (req, res) => {
 			model: 'text-davinci-003',
 			prompt: `${prompt}`,
 			temperature: 0,
-			max_tokens: 2500,
+			max_tokens: 3000,
 			top_p: 1,
-			frequency_penalty: 0.3,
-			presence_penalty: 0.2,
+			frequency_penalty: 0.5,
+			presence_penalty: 0,
 		});
 
 		res.status(200).send({
