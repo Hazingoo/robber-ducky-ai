@@ -6,7 +6,9 @@ import './MainChat.css';
 
 function Chat() {
 	const [formValue, setFormValue] = useState('');
-	const [messages, setMessages] = useState([]);
+	const [messages, setMessages] = useState([
+		{ isAi: true, value: 'What are you going to teach me today?' },
+	]);
 	const [loading, setLoading] = useState(false);
 
 	const handleSubmit = async (e) => {
@@ -59,7 +61,11 @@ function Chat() {
 				</div>
 			))}
 			<form onSubmit={handleSubmit}>
-				<textarea value={formValue} onChange={(e) => setFormValue(e.target.value)} />
+				<textarea
+					placeholder='Explain....'
+					value={formValue}
+					onChange={(e) => setFormValue(e.target.value)}
+				/>
 				<button type='submit'>
 					<img src={send} alt='submit' />
 				</button>
